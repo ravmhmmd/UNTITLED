@@ -33,45 +33,18 @@ input_nama :-
 
 pilih_job(Role) :-
     Role =:= 1,
-    hero(1, A, B, C, D, E, F, G, H, I),
-    Job is A,
-    Level is B,
-    MaxHP is C,
-    HP is D,
-    Attack is E,
-    Special is F,
-    Defense is G,
-    EXP is H,
-    Gold is I,
-    asserta(player(Job,Level,MaxHP,HP,Attack,Special,Defense,EXP,Gold)),!.
+    hero(1, Nama_role, Level, MaxHP, HP, Attack, Special, Defense, EXP, Gold),
+    asserta(player(Nama_role, Level, MaxHP, HP, Attack, Special, Defense, EXP, Gold)),!.
 
 pilih_job(Role) :-
     Role =:= 2,
-    hero(2, A, B, C, D, E, F, G, H, I),
-    Job is A,
-    Level is B,
-    MaxHP is C,
-    HP is D,
-    Attack is E,
-    Special is F,
-    Defense is G,
-    EXP is H,
-    Gold is I,
-    asserta(player(Job,Level,MaxHP,HP,Attack,Special,Defense,EXP,Gold)),!.
+    hero(2, Nama_role, Level, MaxHP, HP, Attack, Special, Defense, EXP, Gold),
+    asserta(player(Nama_role, Level, MaxHP, HP, Attack, Special, Defense, EXP, Gold)),!.
 
 pilih_job(Role) :-
     Role =:= 3,
-    hero(3, A, B, C, D, E, F, G, H, I),
-    Job is A,
-    Level is B,
-    MaxHP is C,
-    HP is D,
-    Attack is E,
-    Special is F,
-    Defense is G,
-    EXP is H,
-    Gold is I,
-    asserta(player(Job,Level,MaxHP,HP,Attack,Special,Defense,EXP,Gold)),!.
+    hero(3, Nama_role, Level, MaxHP, HP, Attack, Special, Defense, EXP, Gold),
+    asserta(player(Nama_role, Level, MaxHP, HP, Attack, Special, Defense, EXP, Gold)),!.
 
 /* ---------------------------------- COMMANDS ----------------------------------- */
 
