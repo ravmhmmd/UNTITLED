@@ -14,9 +14,64 @@
 /* ------------------------- IMPORT FILE YANG DIGUNAKAN -------------------------- */
 :- include('facts.pl').
 :- include('map.pl').
+:- include('gui.pl').
 
 /* ----------------------------- DYNAMIC PREDICATE ------------------------------- */
-:- dynamic(inGame/0).   % saat pemain memulai permainan
+:- dynamic(inGame/0).       % saat pemain memulai permainan
+:- dynamic(nama_player/1).  % nama player
+:- dynamic(player/9).       % stat player
+
+/* ----------------------------- INISIALISASI GAME ------------------------------- */
+:- initialization(start_page).
+
+/* -------------------------------- FUNGSI LAIN ---------------------------------- */
+input_nama :-
+    write('Masukkan username yang akan digunakan : '), nl,
+    read(Nama),
+    asserta(nama_player(Nama)), nl,
+    write('Halo '), write(Nama), write(', selamat datang di <nama desanya>.'), nl,!.
+
+pilih_job(Role) :-
+    Role =:= 1,
+    hero(1, A, B, C, D, E, F, G, H, I),
+    Job is A,
+    Level is B,
+    MaxHP is C,
+    HP is D,
+    Attack is E,
+    Special is F,
+    Defense is G,
+    EXP is H,
+    Gold is I,
+    asserta(player(Job,Level,MaxHP,HP,Attack,Special,Defense,EXP,Gold)),!.
+
+pilih_job(Role) :-
+    Role =:= 2,
+    hero(2, A, B, C, D, E, F, G, H, I),
+    Job is A,
+    Level is B,
+    MaxHP is C,
+    HP is D,
+    Attack is E,
+    Special is F,
+    Defense is G,
+    EXP is H,
+    Gold is I,
+    asserta(player(Job,Level,MaxHP,HP,Attack,Special,Defense,EXP,Gold)),!.
+
+pilih_job(Role) :-
+    Role =:= 3,
+    hero(3, A, B, C, D, E, F, G, H, I),
+    Job is A,
+    Level is B,
+    MaxHP is C,
+    HP is D,
+    Attack is E,
+    Special is F,
+    Defense is G,
+    EXP is H,
+    Gold is I,
+    asserta(player(Job,Level,MaxHP,HP,Attack,Special,Defense,EXP,Gold)),!.
 
 /* ---------------------------------- COMMANDS ----------------------------------- */
 
@@ -25,7 +80,30 @@ start :-
     inGame,
     write('Permainan sudah dimulai'),!.
 start :-
-    asserta(inGame).
+    asserta(inGame),
+    input_nama,
+    write('Pilih role yang diinginkan : '), nl,
+    write('1. swordsman.'), nl,
+    write('   Max HP      : 200'), nl,
+    write('   Attack      : 60'), nl,
+    write('   Spc. Attack : 100'), nl,
+    write('   Defense     : 10'), nl,
+    nl,
+    write('2. archer.'),nl,
+    write('   Max HP      : 200'), nl,
+    write('   Attack      : 50'), nl,
+    write('   Spc. Attack : 90'), nl,
+    write('   Defense     : 15'), nl,
+    nl,
+    write('3. sorcerer.'),nl,
+    write('   Max HP      : 200'), nl,
+    write('   Attack      : 40'), nl,
+    write('   Spc. Attack : 80'), nl,
+    write('   Defense     : 20'), nl,
+    write('Role yang dipilih (masukkan angkanyas) : '),
+    read(Role), nl,
+    pilih_job(Role), nl,
+    write('Selamat berpetualang.').
 
 /* Map */
 map :-
@@ -46,57 +124,75 @@ map :-
     write('M    : Miniboss'),nl,
     write('-    : Empty Space'),nl,!.
 
+/* Status */
+status :-
+    player(Job,Level,MaxHP,HP,Attack,Special,Defense,EXP,Gold),
+    write('Status Pemain : '),nl,
+    write('Job              : '),write(Job),nl,
+    write('Level            : '),write(Level),nl,
+    write('HP               : '),write(HP),write(' from '),write(MaxHP),nl,
+    write('EXP              : '),write(EXP),nl,
+    write('Attack           : '),write(Attack),nl,
+    write('Special Attack   : '),write(Special),nl,
+    write('Defense          : '),write(Defense),nl,
+    write('Gold             : '),write(Gold),nl.
+    
+
 /* W, A, S, D */
 w :-
-    player(X,_),
+    player_loc(X,_),
     X=:=1,
     write('Anda berada di pinggir Map, tidak bisa bergerak ke atas.'),nl,
     write('Masukan command lain.'),nl,
     map,!.
 
 w :-
-    retract(player(X,Y)),
+    retract(player_loc(X,Y)),
     NX is X-1,
-    asserta(player(NX,Y)),
+    asserta(player_loc(NX,Y)),
+    write('Anda bergerak ke atas sejauh 1 tile.'), nl,
     map,!.
 
 a :-
-    player(_,Y),
+    player_loc(_,Y),
     Y=:=1,
     write('Anda berada di pinggir Map, tidak bisa bergerak ke kiri.'),nl,
     write('Masukan command lain.'),nl,
     map,!.
 
 a :-
-    retract(player(X,Y)),
+    retract(player_loc(X,Y)),
     NY is Y-1,
-    asserta(player(X,NY)),
+    asserta(player_loc(X,NY)),
+    write('Anda bergerak ke kiri sejauh 1 tile.'), nl,
     map,!.
 
 s :-
-    player(X,_),
+    player_loc(X,_),
     X=:=10,
     write('Anda berada di pinggir Map, tidak bisa bergerak ke bawah.'),nl,
     write('Masukan command lain.'),nl,
     map,!.
 
 s :-
-    retract(player(X,Y)),
+    retract(player_loc(X,Y)),
     NX is X+1,
-    asserta(player(NX,Y)),
+    asserta(player_loc(NX,Y)),
+    write('Anda bergerak ke bawah sejauh 1 tile.'), nl,
     map,!.
 
 d :-
-    player(X,Y),
+    player_loc(_,Y),
     Y=:=15,
     write('Anda berada di pinggir Map, tidak bisa bergerak ke kanan.'),nl,
     write('Masukan command lain.'),nl,
     map,!.
 
 d :-
-    retract(player(X,Y)),
+    retract(player_loc(X,Y)),
     NY is Y+1,
-    asserta(player(X,NY)),
+    asserta(player_loc(X,NY)),
+    write('Anda bergerak ke kanan sejauh 1 tile.'), nl,
     map,!.
 
 /* Quit */
@@ -106,6 +202,7 @@ quit :-
 /* Help */
 help :-
     write(' _____________________________________________________________________'), nl,
+    write(' |                                                                   |'), nl,
     write(' |    1. start.    : Memulai permainan                               |'), nl,
     write(' |    2. map.      : Menampilkan peta                                |'), nl,
     write(' |    3. status.   : Menampilkan kondisi pemain                      |'), nl,

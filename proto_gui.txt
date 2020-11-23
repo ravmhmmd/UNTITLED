@@ -1,0 +1,16 @@
+1. START_PAGE :
+
+	_________	___	___	_________      ___     ___     ___
+       |xxxxxxxxx|     |xxx|   |xxx|   |xxxxxxxxx|    |xxx|   |xxx|   |xxx|
+             |xxx|     |xxx|   |xxx|   |xxx|  |xx|    |xxx|   |xxx|   |xxx|
+             |xxx|     |xxx|   |xxx|   |xxx|  |xx|    |xxx|   |xxx|   |xxx|
+             |xxx|     |xxx|   |xxx|   |xxx|  |xx|    |xxx|   |xxx|   |xxx|
+        ____/xxxx|     |xxx\___/xxx|   |xxx|  |xx|    |xxx\___/xxx|   |xxxxxxxxxxx|
+       |xxxxxxxx/       \xxxxxxxxx/    |xxxxxxxx/      \xxxxxxxxx/    |xxxxxxxxxxx|
+
+				_____________________________
+                                |                           |
+                                |     Masukkan Command :    |
+				|	  1. start.         |
+				|         2. load.          |
+                                |___________________________|
