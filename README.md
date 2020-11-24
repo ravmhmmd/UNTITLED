@@ -1,1 +1,1 @@
-# Tugas Besar Logika Komputasional
+# tubesLogkom
