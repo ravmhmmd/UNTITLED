@@ -24,32 +24,6 @@
 
 /* ----------------------------- INISIALISASI GAME ------------------------------- */
 :- initialization(start_page).
-%:- initialization(commandLimit).
-
-% masih error commandLimit
-pesan_error :-
-    write('Command yang anda masukan salah, masukan command lain.'),
-    write('Untuk melihat daftar command ketikan : "help." ').
-
-commandLimit :-
-    repeat,
-    write('Input Command : '),
-    catch(read(Comm), error(_,_), pesan_error), (
-        Comm = 'start', call(start);
-        Comm = 'load', call(load);
-        Comm = 'quit', call(quit);
-        Comm = 'help', call(help);
-        inGame, (
-            Comm = 'map', call(map);
-            Comm = 'status', call(status);
-            Comm = 'w', call(w);
-            Comm = 'a', call(a);
-            Comm = 's', call(s);
-            Comm = 'd', call(d);
-            Comm = 'save', call(save)          
-            )
-        ),
-        fail.
 
 /* -------------------------------- FUNGSI LAIN ---------------------------------- */
 input_nama :-

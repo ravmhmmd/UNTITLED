@@ -17,7 +17,7 @@
 /* -------------------------------- MASUK TOKO ----------------------------------- */
 
 /* beliPotion. */
-beliPotion :-                   %blom di tambah ke inventory
+beliPotion :-                   % masi error
     beliPotion_page,
     read(NoPotion), nl,
     pilih_potion(NoPotion),!.
