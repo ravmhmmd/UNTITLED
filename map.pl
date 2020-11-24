@@ -12,12 +12,11 @@
 %
 /* ----------------------------- DYNAMIC PREDICATE ------------------------------- */
 :- dynamic(player_loc/2).
-asserta(player_loc(1,1)).
-(player_loc(1,1)).
-shop(4,5).
-shop(8,12).
-dungeon_boss(10,15).
-quest(8,3).
+player_loc(1,1).
+shop_loc(4,5).
+shop_loc(8,12).
+dungeon_boss_loc(10,15).
+quest_loc(8,3).
 
 /* ------------------------------------ BATAS ------------------------------------ */
 batasAtas(X,_) :-
@@ -54,17 +53,17 @@ printElmtMap(X,Y) :-
 
 /* ------------------------------------- SHOP ------------------------------------- */
 printElmtMap(X,Y) :-
-    shop(X,Y),
+    shop_loc(X,Y),
     write('S '),!.
 
 /* --------------------------------- DUNGEON BOSS --------------------------------- */
 printElmtMap(X,Y) :-
-    dungeon_boss(X,Y),
+    dungeon_boss_loc(X,Y),
     write('D '),!.
 
 /* ------------------------------------- QUEST ------------------------------------ */
 printElmtMap(X,Y) :-
-    quest(X,Y),
+    quest_loc(X,Y),
     write('Q '),!.
     
 /* --------------------------------- BAGIAN DALAM --------------------------------- */

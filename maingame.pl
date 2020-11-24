@@ -15,6 +15,7 @@
 :- include('facts.pl').
 :- include('map.pl').
 :- include('gui.pl').
+:- include('shop.pl').
 
 /* ----------------------------- DYNAMIC PREDICATE ------------------------------- */
 :- dynamic(inGame/0).       % saat pemain memulai permainan
@@ -23,28 +24,60 @@
 
 /* ----------------------------- INISIALISASI GAME ------------------------------- */
 :- initialization(start_page).
+%:- initialization(commandLimit).
+
+% masih error commandLimit
+pesan_error :-
+    write('Command yang anda masukan salah, masukan command lain.'),
+    write('Untuk melihat daftar command ketikan : "help." ').
+
+commandLimit :-
+    repeat,
+    write('Input Command : '),
+    catch(read(Comm), error(_,_), pesan_error), (
+        Comm = 'start', call(start);
+        Comm = 'load', call(load);
+        Comm = 'quit', call(quit);
+        Comm = 'help', call(help);
+        inGame, (
+            Comm = 'map', call(map);
+            Comm = 'status', call(status);
+            Comm = 'w', call(w);
+            Comm = 'a', call(a);
+            Comm = 's', call(s);
+            Comm = 'd', call(d);
+            Comm = 'save', call(save)          
+            )
+        ),
+        fail.
 
 /* -------------------------------- FUNGSI LAIN ---------------------------------- */
 input_nama :-
-    write('Masukkan username yang akan digunakan : '), nl,
+    write('Masukkan username yang akan digunakan : '),
     read(Nama),
     asserta(nama_player(Nama)), nl,
     write('Halo '), write(Nama), write(', selamat datang di <nama desanya>.'), nl,!.
 
 pilih_job(Role) :-
     Role =:= 1,
-    hero(1, Nama_role, Level, MaxHP, HP, Attack, Special, Defense, EXP, Gold),
-    asserta(player(Nama_role, Level, MaxHP, HP, Attack, Special, Defense, EXP, Gold)),!.
+    ID_hero is Role,
+    hero(ID_hero, Nama_role, Level, MaxHP, HP, Attack, Special, Defense, EXP, Gold),
+    asserta(player(Nama_role, Level, MaxHP, HP, Attack, Special, Defense, EXP, Gold)),
+    write('Kamu memilih swordsman.'), nl,!.
 
 pilih_job(Role) :-
     Role =:= 2,
-    hero(2, Nama_role, Level, MaxHP, HP, Attack, Special, Defense, EXP, Gold),
-    asserta(player(Nama_role, Level, MaxHP, HP, Attack, Special, Defense, EXP, Gold)),!.
+    ID_hero is Role,
+    hero(ID_hero, Nama_role, Level, MaxHP, HP, Attack, Special, Defense, EXP, Gold),
+    asserta(player(Nama_role, Level, MaxHP, HP, Attack, Special, Defense, EXP, Gold)),
+    write('Kamu memilih archer.'), nl,!.
 
 pilih_job(Role) :-
     Role =:= 3,
-    hero(3, Nama_role, Level, MaxHP, HP, Attack, Special, Defense, EXP, Gold),
-    asserta(player(Nama_role, Level, MaxHP, HP, Attack, Special, Defense, EXP, Gold)),!.
+    ID_hero is Role,
+    hero(ID_hero, Nama_role, Level, MaxHP, HP, Attack, Special, Defense, EXP, Gold),
+    asserta(player(Nama_role, Level, MaxHP, HP, Attack, Special, Defense, EXP, Gold)),
+    write('Kamu memilih sorcerer.'), nl,!.
 
 /* ---------------------------------- COMMANDS ----------------------------------- */
 
@@ -54,26 +87,8 @@ start :-
     write('Permainan sudah dimulai'),!.
 start :-
     asserta(inGame),
-    input_nama,
-    write('Pilih role yang diinginkan : '), nl,
-    write('1. swordsman.'), nl,
-    write('   Max HP      : 200'), nl,
-    write('   Attack      : 60'), nl,
-    write('   Spc. Attack : 100'), nl,
-    write('   Defense     : 10'), nl,
-    nl,
-    write('2. archer.'),nl,
-    write('   Max HP      : 200'), nl,
-    write('   Attack      : 50'), nl,
-    write('   Spc. Attack : 90'), nl,
-    write('   Defense     : 15'), nl,
-    nl,
-    write('3. sorcerer.'),nl,
-    write('   Max HP      : 200'), nl,
-    write('   Attack      : 40'), nl,
-    write('   Spc. Attack : 80'), nl,
-    write('   Defense     : 20'), nl,
-    write('Role yang dipilih (masukkan angkanyas) : '),
+    input_nama, nl,
+    pilih_job_page,
     read(Role), nl,
     pilih_job(Role), nl,
     write('Selamat berpetualang.').
@@ -100,15 +115,20 @@ map :-
 /* Status */
 status :-
     player(Job,Level,MaxHP,HP,Attack,Special,Defense,EXP,Gold),
-    write('Status Pemain : '),nl,
-    write('Job              : '),write(Job),nl,
-    write('Level            : '),write(Level),nl,
-    write('HP               : '),write(HP),write(' from '),write(MaxHP),nl,
-    write('EXP              : '),write(EXP),nl,
-    write('Attack           : '),write(Attack),nl,
-    write('Special Attack   : '),write(Special),nl,
-    write('Defense          : '),write(Defense),nl,
-    write('Gold             : '),write(Gold),nl.
+    nama_player(Nama),
+    write(' |===========================================|'), nl,
+    write(' |               Status Pemain               |'), nl,
+    write(' |-------------------------------------------|'), nl,
+    write('         Nama             : '),write(Nama), nl,
+    write('         Job              : '),write(Job),nl,
+    write('         Level            : '),write(Level),nl,
+    write('         HP               : '),write(HP),write(' from '),write(MaxHP),nl,
+    write('         EXP              : '),write(EXP),nl,
+    write('         Attack           : '),write(Attack),nl,
+    write('         Special Attack   : '),write(Special),nl,
+    write('         Defense          : '),write(Defense),nl,
+    write('         Gold             : '),write(Gold),nl,
+    write(' |===========================================|'),!.
     
 
 /* W, A, S, D */
@@ -168,14 +188,37 @@ d :-
     write('Anda bergerak ke kanan sejauh 1 tile.'), nl,
     map,!.
 
+/* Shop */
+
+isDiShop :-
+    player_loc(XP,YP),
+    shop_loc(XS,YS),
+    XP =:= XS,
+    YP =:= YS, !.
+
+shop :-
+    isDiShop, nl,
+    shop_page,
+    repeat,
+    read(Comm),
+    (
+        Comm = 'beliPotion', call(beliPotion);
+        Comm = 'beliItem', call(beliItem);
+        Comm = 'keluarToko', call(keluarToko)
+    ).
+
+shop :-
+    \+ isDiShop, nl,
+    write('Anda sedang tidak berada di Toko, tidak bisa membeli apapun disini.'), nl, nl,
+    write('Masukan command lain.'), nl.
+
 /* Quit */
 quit :-
     halt.
 
 /* Help */
 help :-
-    write(' _____________________________________________________________________'), nl,
-    write(' |                                                                   |'), nl,
+    write(' |===================================================================|'), nl,
     write(' |    1. start.    : Memulai permainan                               |'), nl,
     write(' |    2. map.      : Menampilkan peta                                |'), nl,
     write(' |    3. status.   : Menampilkan kondisi pemain                      |'), nl,
@@ -185,7 +228,8 @@ help :-
     write(' |    7. d.        : Bergerak ke kanan 1 langkah                     |'), nl,
     write(' |    8. save.     : Menyimpan permainan                             |'), nl,
     write(' |    9. load.     : Memuat permainan                                |'), nl,
-    write(' |   10. quit.     : Keluar dari permainan                           |'), nl,
-    write(' |   11. help.     : Menampilkan bantuan                             |'), nl,
-    write(' |___________________________________________________________________|'), nl, nl.
+    write(' |   10. shop.     : Masuk ke shop untuk belanja                     |'), nl,
+    write(' |   11. quit.     : Keluar dari permainan                           |'), nl,
+    write(' |   12. help.     : Menampilkan bantuan                             |'), nl,
+    write(' |===================================================================|'), nl, nl.
 

@@ -71,36 +71,48 @@ boss(dragon).
 /* ------------------------------------ Item ------------------------------------- */
 /* item(ID_item, Nama_item, Kategori, HP, Attack, Defense). */
 
+/* Item Potion (Universal) */
+potion(1, small_Health, potion, x, y, z).
+potion(2, medium_Health, potion, x, y, z).
+potion(3, big_Health, potion, x, y, z).
+
 /* Item Swordsman */
-item(1, namapedang1, sword, x, y, z).  %default
-item(2, namapedang2, sword, x, y, z).
-item(3, namapedang3, sword, x, y, z).
+item(1, namapedang1, swordsman, x, y, z).  %default
+item(2, namapedang2, swordsman, x, y, z).
+item(3, namapedang3, swordsman, x, y, z).
 
 /* Item Archer */
-item(4, namapanah1, bow, x, y, z).  %default
-item(5, namapanah2, bow, x, y, z).
-item(6, namapanah3, bow, x, y, z).
+item(4, namapanah1, archer, x, y, z).  %default
+item(5, namapanah2, archer, x, y, z).
+item(6, namapanah3, archer, x, y, z).
 
 /* Item Sorcerer */
-item(7, namatongkat1, staff, x, y, z).  %default
-item(8, namatongkat2, staff, x, y, z).
-item(9, namatongkat3, staff, x, y, z).
+item(7, namatongkat1, sorcerer, x, y, z).  %default
+item(8, namatongkat2, sorcerer, x, y, z).
+item(9, namatongkat3, sorcerer, x, y, z).
 
 /* Item Armor (Universal) */
-item(10, namaarmor1, armor, x, y, z).  %default
-item(11, namaarmor2, armor, x, y, z).
-item(12, namaarmor3, armor, x, y, z).
+item(101, namaarmor1, swordsman, x, y, z).  %default
+item(111, namaarmor2, swordsman, x, y, z).
+item(121, namaarmor3, swordsman, x, y, z).
 
-/* Item Potion (Universal) */
-item(13, small_Health, potion, x, y, z).
-item(14, medium_Health, potion, x, y, z).
-item(15, big_Health, potion, x, y, z).
+item(102, namaarmor1, archer, x, y, z).  %default
+item(112, namaarmor2, archer, x, y, z).
+item(122, namaarmor3, archer, x, y, z).
+
+item(103, namaarmor1, sorcerer, x, y, z).  %default
+item(113, namaarmor2, sorcerer, x, y, z).
+item(123, namaarmor3, sorcerer, x, y, z).
+
+
 
 /* Item Legendary (didapatkan dengan menyelesaikan hidden quest) */
-item(16, namapedanglegend, sword, x, y, z).
-item(17, namapanahlegend, bow, x, y, z).
-item(18, namatongkatlegend, staff, x, y, z).
-item(19, namaarmorlegend, armor, x, y, z).
+item(16, namapedanglegend, swordsman, x, y, z).
+item(17, namapanahlegend, archer, x, y, z).
+item(18, namatongkatlegend, sorcerer, x, y, z).
+item(191, namaarmorlegend, swordsman, x, y, z).
+item(192, namaarmorlegend, archer, x, y, z).
+item(192, namaarmorlegend, sorcerer, x, y, z).
 
 
 
