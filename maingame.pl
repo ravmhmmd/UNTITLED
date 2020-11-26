@@ -30,7 +30,7 @@ input_nama :-
     write('Masukkan username yang akan digunakan : '),
     read(Nama),
     asserta(nama_player(Nama)), nl,
-    write('Halo '), write(Nama), write(', selamat datang di <nama desanya>.'), nl,!.
+    write('Halo '), write(Nama), write(', selamat datang di Yalheir, sebuah desa di puncak Gunung Mahahiru.'), nl,!.
 
 pilih_job(Role) :-
     Role =:= 1,
@@ -97,7 +97,7 @@ status :-
     write('         Job              : '),write(Job),nl,
     write('         Level            : '),write(Level),nl,
     write('         HP               : '),write(HP),write(' from '),write(MaxHP),nl,
-    write('         EXP              : '),write(EXP),nl,
+    write('         EXP              : '),write(EXP),write('from 300'),nl,
     write('         Attack           : '),write(Attack),nl,
     write('         Special Attack   : '),write(Special),nl,
     write('         Defense          : '),write(Defense),nl,

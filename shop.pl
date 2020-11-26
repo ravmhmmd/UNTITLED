@@ -10,6 +10,8 @@
 % |  File  : shop.pl                               |
 % |________________________________________________|
 %
+/* ------------------------------- IMPORT MODULE --------------------------------- */
+:- use_module(library(random)).
 
 /* ----------------------------- DYNAMIC PREDICATE ------------------------------- */
 :- dynamic(player/9).
@@ -87,8 +89,104 @@ gacha :-
 gacha :-
     player(Nama_role,_,_,_,_,_,_,_,Gold),
     Gold >= 150,
+    LastGold is Gold-150,
+    retract(player(Nama_role, Level, MaxHP, HP, Attack, Special, Defense, EXP, Gold)),
+    asserta(player(Nama_role, Level, MaxHP, HP, Attack, Special, Defense, EXP, LastGold)),
+    random(0, 100, N),
+    (
+        N < 30,
+        write('Maaf, anda belum dapat item apapun.'), nl;
+
+        N < 55,
+        (
+            Nama_role = 'swordsman',
+            write('Anda mendapatkan Blade of a Thousand Cuts <Level 2 Sword>!'), nl;
+
+            Nama_role = 'archer',
+            write('Anda mendapatkan Shadowleaf Skeletal Longbow <Level 2 Bow>!'), nl;
+
+            Nama_role = 'sorcerer',
+            write('Anda mendapatkan Fiery Sagewood Cane <Level 2 Staff>!'), nl
+        );
+
+        N < 80,
+        write('Anda mendapatkan Tunic of Timeless Fires <Level 2 Armor>'), nl;
+
+        N < 89,
+        (
+            Nama_role = 'swordsman',
+            write('Anda mendapatkan Saber of Hope <Level 3 Sword>!'), nl;
+
+            Nama_role = 'archer',
+            write('Anda mendapatkan Ironbark Piercer <Level 3 Bow>!'), nl;
+
+            Nama_role = 'sorcerer',
+            write('Anda mendapatkan Maelstrom <Level 3 Staff>!'), nl
+        );
+
+        N < 98,
+        write('Anda mendapatkan Hollow Iron Armor <Level 3 Armor>'), nl;
+
+        N < 99,
+        (
+            Nama_role = 'swordsman',
+            write('Anda mendapatkan Aetherius Blade <Level 17 Sword>!'), nl;
+            % tambahin ke inventory
+
+            Nama_role = 'archer',
+            write('Anda mendapatkan Bolter of the King <Level 17 Bow>!'), nl;
+
+            Nama_role = 'sorcerer',
+            write('Anda mendapatkan Soul of Holy Might <Level 17 Staff>!'), nl
+        );
+
+        N < 100,
+        write('Anda mendapatkan Vest of Cursed Dreams <Level 17 Armor>!'), nl
+            write('Anda mendapatkan Shadowleaf Skeletal Longbow <Level 2 Bow>!'), nl;
+
+            Nama_role = 'sorcerer',
+            write('Anda mendapatkan Fiery Sagewood Cane <Level 2 Staff>!'), nl
+        );
+
+        N < 80,
+        write('Anda mendapatkan Tunic of Timeless Fires <Level 2 Armor>'), nl;
+
+        N < 89,
+        (
+            Nama_role = 'swordsman',
+            write('Anda mendapatkan Saber of Hope <Level 3 Sword>!'), nl;
+
+            Nama_role = 'archer',
+            write('Anda mendapatkan Ironbark Piercer <Level 3 Bow>!'), nl;
+
+            Nama_role = 'sorcerer',
+            write('Anda mendapatkan Maelstrom <Level 3 Staff>!'), nl
+        );
+
+        N < 98,
+        write('Anda mendapatkan Hollow Iron Armor <Level 3 Armor>'), nl;
+
+        N < 99,
+        (
+            Nama_role = 'swordsman',
+            write('Anda mendapatkan Aetherius Blade <Level 17 Sword>!'), nl;
+            % tambahin ke inventory
+
+            Nama_role = 'archer',
+            write('Anda mendapatkan Bolter of the King <Level 17 Bow>!'), nl;
+
+            Nama_role = 'sorcerer',
+            write('Anda mendapatkan Soul of Holy Might <Level 17 Staff>!'), nl
+        );
+
+        N < 100,
+        write('Anda mendapatkan Vest of Cursed Dreams <Level 17 Armor>!'), nl
+    )
     write('Pembelian berhasil.'), nl, !.
 
 /* keluarToko. */
-keluarToko :-
-    keluarToko_page. 
+keluarTok;o :-
+    keluarToko_page. 80;,
+        ()
+            
+        

@@ -54,7 +54,7 @@ pilih_job_page :-
 
  /* --------------------------------------- SHOP ---------------------------------------- */
 shop_page :-
-    write('Selamat datang di Toko Pak Joko.'), nl,  nl,
+    write('Selamat datang di Toko Sir Harheil.'), nl,  nl,
     write('Semua potion dan item yang anda butuhkan dapat anda temui disini.'), nl, nl,
     write('Apa yang anda butuhkan ?'), nl, nl,
     write(' |========================|'), nl,
