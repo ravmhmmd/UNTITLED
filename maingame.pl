@@ -16,6 +16,7 @@
 :- include('map.pl').
 :- include('gui.pl').
 :- include('shop.pl').
+:- include('inventory.pl').
 
 /* ----------------------------- DYNAMIC PREDICATE ------------------------------- */
 :- dynamic(inGame/0).       % saat pemain memulai permainan
@@ -53,6 +54,7 @@ pilih_job(Role) :-
     asserta(player(Nama_role, Level, MaxHP, HP, Attack, Special, Defense, EXP, Gold)),
     write('Kamu memilih sorcerer.'), nl,!.
 
+
 /* ---------------------------------- COMMANDS ----------------------------------- */
 
 /* Play */
@@ -65,6 +67,7 @@ start :-
     pilih_job_page,
     read(Role), nl,
     pilih_job(Role), nl,
+    inisialisasi_inventory(Role),
     write('Selamat berpetualang.').
 
 /* Map */
@@ -97,7 +100,7 @@ status :-
     write('         Job              : '),write(Job),nl,
     write('         Level            : '),write(Level),nl,
     write('         HP               : '),write(HP),write(' from '),write(MaxHP),nl,
-    write('         EXP              : '),write(EXP),write('from 300'),nl,
+    write('         EXP              : '),write(EXP),write(' from 300'),nl,
     write('         Attack           : '),write(Attack),nl,
     write('         Special Attack   : '),write(Special),nl,
     write('         Defense          : '),write(Defense),nl,
@@ -207,3 +210,6 @@ help :-
     write(' |   12. help.     : Menampilkan bantuan                             |'), nl,
     write(' |===================================================================|'), nl, nl.
 
+/* credit */
+credit :-
+    credit_page.

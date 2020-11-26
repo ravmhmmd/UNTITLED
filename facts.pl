@@ -19,6 +19,11 @@ hero(1, swordsman, 1, 200, 200, 60, 100, 10, 0, 150).
 hero(2, archer, 1, 200, 200, 50, 90, 15, 0, 150).
 hero(3, sorcerer, 1, 200, 200, 40, 80, 20, 0, 150).
 
+/* ---------------------------------- Inventory -----------------------------------*/
+inventory(1,[sword_of_yalheir, yalheirian_knight_armor],2).
+inventory(2,[bow_of_yalheir, yalheirian_knight_armor],2).
+inventory(3,[staff_of_yalheir, yalheirian_knight_armor],2).
+
 /* ------------------------------------ Enemy ------------------------------------ */
 /* enemy(ID_enemy, Nama_enemy, Level, MaxHP, HP, Attack, Special, Defense, DropEXP, DropGold). */
 
@@ -116,8 +121,6 @@ item(16, vest_of_cursed_dreams, 17, sorcerer, 0, 0, 999).
 
 /* setiap naik level hero yg nambah max health +100 */
 
-/* 
-   setiap enemy drop exp(?)
-   spc attack pake mana atau per brp turn(?)
 
-/* 
+/*   setiap enemy drop exp(?) */
+/*   spc attack pake mana atau per brp turn(?) */

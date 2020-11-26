@@ -12,21 +12,28 @@
 %
 
 start_page :-
-    write(' _________      ___     ___     _________      ___     ___     ___'), nl,
-    write('|xxxxxxxxx|    |xxx|   |xxx|   |xxxxxxxxx|    |xxx|   |xxx|   |xxx|'), nl,
-    write('      |xxx|    |xxx|   |xxx|   |xxx|  |xx|    |xxx|   |xxx|   |xxx|'), nl,
-    write('      |xxx|    |xxx|   |xxx|   |xxx|  |xx|    |xxx|   |xxx|   |xxx|'), nl,
-    write('      |xxx|    |xxx|   |xxx|   |xxx|  |xx|    |xxx|   |xxx|   |xxx|'), nl,
-    write(' _____|xxx|    |xxx|___|xxx|   |xxx|  |xx|    |xxx|___|xxx|   |xxx|'), nl,
-    write('|xxxxxxxx|      |xxxxxxxxx|    |xxxxxxxx|      ||xxxxxxxx|    |xxxxxxxxxxx|'), nl,
     nl,
-    write('                     |=============================|'), nl,
-    write('                     |      Masukkan Command :     |'), nl,
-    write('                     |          1. start.          |'), nl,
-    write('                     |          2. load.           |'), nl,
-    write('                     |          3. help.           |'), nl,
-    write('                     |          4. quit.           |'), nl,
-    write('                     |=============================|'), nl,!.
+    nl,
+    nl,
+    write('   |#####|     |#####|     |######|     |#####|     |###############|     |#####|     |###############|     |#####|               |###############|     |#############|'), nl,
+    write('   |#####|     |#####|     |#######|    |#####|     |###############|     |#####|     |###############|     |#####|               |###############|     |###############|'), nl,
+    write('   |#####|     |#####|     |#####||##|  |#####|          |#####|          |#####|          |#####|          |#####|               |#####|               |#####|     |#####|'), nl,
+    write('   |#####|     |#####|     |#####| |##| |#####|          |#####|          |#####|          |#####|          |#####|               |##########|          |#####|     |#####|'), nl,
+    write('   |#####|     |#####|     |#####| |##| |#####|          |#####|          |#####|          |#####|          |#####|               |##########|          |#####|     |#####|'), nl,
+    write('    |####|     |####|      |#####|  |##||#####|          |#####|          |#####|          |#####|          |#####|               |#####|               |#####|     |#####|'), nl,
+    write('     |#############|       |#####|    |#######|          |#####|          |#####|          |#####|          |###############|     |###############|     |###############|'), nl,
+    write('       |#########|         |#####|     |######|          |#####|          |#####|          |#####|          |###############|     |###############|     |#############|'), nl,
+    nl,
+    write('                                                                      A ROLE PLAYING GAME BY ONEWEEKDEV'), nl,
+    nl,
+    write('                                                                       |=============================|'), nl,
+    write('                                                                       |      Masukkan Command :     |'), nl,
+    write('                                                                       |          1. start.          |'), nl,
+    write('                                                                       |          2. load.           |'), nl,
+    write('                                                                       |          3. help.           |'), nl,
+    write('                                                                       |          4. quit.           |'), nl,
+    write('                                                                       |          5. credit.         |'), nl,
+    write('                                                                       |=============================|'), nl,!.
 
 pilih_job_page :-
     write(' |============================|'), nl,
@@ -98,4 +105,28 @@ beliItem_page :-
 
 keluarToko_page :-
     write('Terima kasih sudah mampir, semoga puas dengan pelayanan kami.'), nl, map,nl, !.
-    
+
+/* credit page */
+credit_page :-
+    write('|===========================================================================================|'), nl,
+    write('|                                                                                           |'), nl,
+    write('|                                         UNTITLED                                          |'), nl,
+    write('|                             A ROLE PLAYING GAME BY ONEWEEKDEV                             |'), nl,
+    write('|                                                                                           |'), nl,
+    write('|-------------------------------------------------------------------------------------------|'), nl,
+    write('|                                                                                           |'), nl,
+    write('|   UNTITLED adalah sebuah game dengan genre RPG buatan ONEWEEKDEV. Game ini menceritakan   |'), nl,
+    write('|   tentang seorang pangeran yang diberi misi untuk menyelamatkan seorang putri dari desa   |'), nl,
+    write('|   Yalheir yang diculik oleh DRAGON OF YALHEIR.                                            |'), nl,
+    write('|                                                                                           |'), nl,
+    write('|-------------------------------------------------------------------------------------------|'), nl,
+    write('|                                                                                           |'), nl,
+    write('|   ONEWEEKDEV merupakan sebuah grup yang berdiri pada November 2020, berisikan mahasiswa   |'), nl,
+    write('|   Institut Teknologi Bandung, dalam rangka menyelesaikan Tugas Besar IF2121.   Grup ini   |'), nl,
+    write('|   beranggotakan :                                                                         |'), nl,
+    write('|      1. Rahmah Khoirussyifa’ Nurdini - 13519013                                           |'), nl,
+    write('|      2. Syarifah Aisha G.Y.          - 13519089                                           |'), nl,
+    write('|      3. Delisha Azza Naadira         - 13519133                                           |'), nl,
+    write('|      4. Muhammad Rayhan Ravianda     - 13519201                                           |'), nl,
+    write('|                                                                                           |'), nl,
+    write('|===========================================================================================|'), nl, !.
