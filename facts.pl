@@ -24,6 +24,11 @@ inventory(1,[sword_of_yalheir, yalheirian_knight_armor],2).
 inventory(2,[bow_of_yalheir, yalheirian_knight_armor],2).
 inventory(3,[staff_of_yalheir, yalheirian_knight_armor],2).
 
+/* ---------------------------------- Equip -----------------------------------*/
+equip(1,x,x). % x artinya slot kosong
+equip(2,x,x).
+equip(3,x,x).
+
 /* ------------------------------------ Enemy ------------------------------------ */
 /* enemy(ID_enemy, Nama_enemy, Level, MaxHP, HP, Attack, Special, Defense, DropEXP, DropGold). */
 
@@ -34,13 +39,13 @@ enemy(2, slime, 1, 100, 100, 25, 50, 15, 20, 50).
 enemy(3, wolf, 1, 100, 100, 30, 60, 20, 20, 50).
 
 /* Wave 2 */
-/* spawn secara random selama permainan, mulai dimunculkan setelah Minibos 2 */
+/* spawn secara random selama permainan, mulai dimunculkan setelah Minibos 1 */
 enemy(4, goblin, 5, 300, 300, 80, 160, 25, 30, 60).
 enemy(5, slime, 5, 300, 300, 60, 120, 35, 30, 60).
 enemy(6, wolf, 5, 300, 300, 70, 140, 45, 30, 60).
 
 /* Wave 3 (Last) */
-/* spawn secara random selama permainan, mulai dimunculkan setelah Minibos 4 */
+/* spawn secara random selama permainan, mulai dimunculkan setelah Minibos 2 */
 enemy(7, goblin, 9, 500, 500, 150, 250, 55, 50, 80).
 enemy(8, slime, 9, 500, 500, 130, 230, 65, 50, 80).
 enemy(9, wolf, 9, 500, 500, 140, 240, 75, 50, 80).
@@ -52,15 +57,16 @@ enemy(10, hydra, 2, 300, 300, 40, 80, 30, 100, 150).
 enemy(11, chimera, 6, 500, 500, 75, 150, 40, 150, 200).
 
 /* Miniboss 3 */
-enemy(12, supermega_hydra, 10, 1100, 1100, 150, 300, 80).
-enemy(13, supermega_chimera, 10, 1100, 1100, 150, 300, 80).
+enemy(12, supermega_hydra, 10, 1100, 1100, 150, 300, 80, 100, 200).
+enemy(13, supermega_chimera, 10, 1100, 1100, 150, 300, 80, 100, 200).
 
 /* Miniboss 4 */
-enemy(14, devil_of_yalheir, 12, 1300,1300, 170, 300, 90).
+enemy(14, devil_of_yalheir, 12, 1300, 1300, 170, 300, 90, 300, 0).
 
 /* Boss */
-enemy(15, dragon_of_yalheir, 15, 2000, 2000, 200, 300, 100).
+enemy(15, dragon_of_yalheir, 15, 2000, 2000, 200, 300, 100, 9999, 9999).
 
+miniboss(hydra).
 miniboss(chimera).
 miniboss(supermega_hydra).
 miniboss(supermega_chimera).
@@ -77,41 +83,40 @@ potion(3, big_Health, potion, 300, 0, 0).
 
 /* Item Swordsman */
 item(1, sword_of_yalheir, 1, swordsman, 0, 20, 0).  %default
-item(5, blade_of_a_thousand_cuts, 2, swordsman, 0, 60, 0).
-item(6, saber_of_hope, 3, swordsman, 0, 100, 0).
+item(2, blade_of_a_thousand_cuts, 2, swordsman, 0, 60, 0).
+item(3, saber_of_hope, 3, swordsman, 0, 100, 0).
 
 /* Item Archer */
-item(2, bow_of_yalheir, 1, archer, 0, 20, 0).  %default
-item(7, shadowleaf_skeletal_longbow, 2, archer, 0, 60, 0).
-item(8, ironbark_piercer, 3, archer, 0, 100, 0).
+item(5, bow_of_yalheir, 1, archer, 0, 20, 0).  %default
+item(6, shadowleaf_skeletal_longbow, 2, archer, 0, 60, 0).
+item(7, ironbark_piercer, 3, archer, 0, 100, 0).
 
 /* Item Sorcerer */
-item(3, staff_of_yalheir, 1, sorcerer, 0, 20, 0).  %default
-item(9, fiery_sagewood_cane, 2, sorcerer, 0, 60, 0).
-item(10, maelstrom, 3, sorcerer, 0, 100, 0).
+item(9, staff_of_yalheir, 1, sorcerer, 0, 20, 0).  %default
+item(10, fiery_sagewood_cane, 2, sorcerer, 0, 60, 0).
+item(11, maelstrom, 3, sorcerer, 0, 100, 0).
 
 /* Item Armor (Universal) */
-item(4, yalheirian_knight_armor, 1, swordsman, 0, 0, 15).  %default
-item(11, tunic_of_timeless_fires, 2, swordsman, 0, 0, 30).
-item(12, hollow_iron_armor, 3, swordsman, 0, 0, 50).
+item(13, yalheirian_knight_armor, 1, swordsman, 0, 0, 15).  %default
+item(14, tunic_of_timeless_fires, 2, swordsman, 0, 0, 30).
+item(15, hollow_iron_armor, 3, swordsman, 0, 0, 50).
 
-item(4, yalheirian_knight_armor, 1, archer, 0, 0, 15).  %default
-item(11, tunic_of_timeless_fires, 2, archer, 0, 0, 30).
-item(12, hollow_iron_armor, 3, archer, 0, 0, 50).
+item(13, yalheirian_knight_armor, 1, archer, 0, 0, 15).  %default
+item(14, tunic_of_timeless_fires, 2, archer, 0, 0, 30).
+item(15, hollow_iron_armor, 3, archer, 0, 0, 50).
 
-item(4, yalheirian_knight_armor, 1, sorcerer, 0, 0, 15).  %default
-item(11, tunic_of_timeless_fires, 2, sorcerer, 0, 0, 30).
-item(12, hollow_iron_armor, 3, sorcerer, 0, 0, 50).
+item(13, yalheirian_knight_armor, 1, sorcerer, 0, 0, 15).  %default
+item(14, tunic_of_timeless_fires, 2, sorcerer, 0, 0, 30).
+item(15, hollow_iron_armor, 3, sorcerer, 0, 0, 50).
 
 
 /* Item Legendary (didapatkan dengan menyelesaikan hidden quest) */
-item(13, aetherius_blade, 17, swordsman, 0, 999, 0).
-item(14, bolter_of_the_king, 17, archer, 0, 999, 0).
-item(15, soul_of_holy_might, 17, sorcerer, 0, 999, 0).
+item(4, aetherius_blade, 17, swordsman, 0, 999, 0).
+item(8, bolter_of_the_king, 17, archer, 0, 999, 0).
+item(12, soul_of_holy_might, 17, sorcerer, 0, 999, 0).
 item(16, vest_of_cursed_dreams, 17, swordsman, 0, 0, 999).
 item(16, vest_of_cursed_dreams, 17, archer, 0, 0, 999).
 item(16, vest_of_cursed_dreams, 17, sorcerer, 0, 0, 999).
-
 
 
 

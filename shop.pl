@@ -107,23 +107,23 @@ gacha :-
         (
             Nama_role = 'swordsman',
             write('Anda mendapatkan Blade of a Thousand Cuts <Level 2 Sword>!'), nl,
-            item(5, NamaItem,_,_,_,_,_),
+            item(2, NamaItem,_,_,_,_,_),
             insert_item(NamaItem);
 
             Nama_role = 'archer',
             write('Anda mendapatkan Shadowleaf Skeletal Longbow <Level 2 Bow>!'), nl,
-            item(7, NamaItem,_,_,_,_,_),
+            item(6, NamaItem,_,_,_,_,_),
             insert_item(NamaItem);            
 
             Nama_role = 'sorcerer',
             write('Anda mendapatkan Fiery Sagewood Cane <Level 2 Staff>!'), nl,
-            item(9,NamaItem,_,_,_,_,_),
+            item(10,NamaItem,_,_,_,_,_),
             insert_item(NamaItem)
         );
 
         N < 80,
         write('Anda mendapatkan Tunic of Timeless Fires <Level 2 Armor>'), nl,
-        item(11,NamaItem,_,_,_,_,_),
+        item(14,NamaItem,_,_,_,_,_),
         insert_item(NamaItem);
 
 
@@ -131,40 +131,40 @@ gacha :-
         (
             Nama_role = 'swordsman',
             write('Anda mendapatkan Saber of Hope <Level 3 Sword>!'), nl,
-            item(6,NamaItem,_,_,_,_,_),
+            item(3,NamaItem,_,_,_,_,_),
             insert_item(NamaItem);
 
             Nama_role = 'archer',
             write('Anda mendapatkan Ironbark Piercer <Level 3 Bow>!'), nl,
-            item(8,NamaItem,_,_,_,_,_),
+            item(7,NamaItem,_,_,_,_,_),
             insert_item(NamaItem);
 
             Nama_role = 'sorcerer',
             write('Anda mendapatkan Maelstrom <Level 3 Staff>!'), nl,
-            item(10,NamaItem,_,_,_,_,_),
+            item(11,NamaItem,_,_,_,_,_),
             insert_item(NamaItem)
         );
 
         N < 98,
         write('Anda mendapatkan Hollow Iron Armor <Level 3 Armor>'), nl,
-        item(12,NamaItem,_,_,_,_,_),
+        item(15,NamaItem,_,_,_,_,_),
         insert_item(NamaItem);
 
         N < 99,
         (
             Nama_role = 'swordsman',
             write('Anda mendapatkan Aetherius Blade <Level 17 Sword>!'), nl,
-            item(13,NamaItem,_,_,_,_,_),
+            item(4,NamaItem,_,_,_,_,_),
             insert_item(NamaItem);
 
             Nama_role = 'archer',
             write('Anda mendapatkan Bolter of the King <Level 17 Bow>!'), nl,
-            item(14,NamaItem,_,_,_,_,_),
+            item(8,NamaItem,_,_,_,_,_),
             insert_item(NamaItem);
 
             Nama_role = 'sorcerer',
             write('Anda mendapatkan Soul of Holy Might <Level 17 Staff>!'), nl,
-            item(15,NamaItem,_,_,_,_,_),
+            item(12,NamaItem,_,_,_,_,_),
             insert_item(NamaItem)
         );
 

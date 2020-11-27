@@ -130,3 +130,30 @@ credit_page :-
     write('|      4. Muhammad Rayhan Ravianda     - 13519201                                           |'), nl,
     write('|                                                                                           |'), nl,
     write('|===========================================================================================|'), nl, !.
+
+/* victory */
+victory_page :-
+    write('|#####|       |#####|     |#####|     |###########|     |###############|     |#############|     |###############|       |#####|     |#####| '), nl,
+    write(' |#####|     |#####|      |#####|     |###########|     |###############|     |#############|     |####|     |#####|       |#####|   |#####|  '), nl,
+    write('  |#####|   |#####|       |#####|     |###|                  |#####|          |####     ####|     |####|      |#####|       |#####| |#####|   '), nl,
+    write('   |#####| |#####|        |#####|     |###|                  |#####|          |####     ####|     |####|     |#####|          |####|####|     '), nl,
+    write('     |####|####|          |#####|     |###|                  |#####|          |####     ####|     |###############|             |#####|       '), nl,
+    write('      |#######|           |#####|     |###########|          |#####|          |#############|     |####|      |####|            |#####|       '), nl,
+    write('       |#####|            |#####|     |###########|          |#####|          |#############|     |####|      |####|            |#####|       '), nl,
+    nl,
+    nl,
+    write('Anda berhasil mengalahkan DRAGON OF YALHEIR.'),nl,
+    nama_player(Nama),
+    nl,nl,nl,nl,nl,nl,nl,nl,nl,nl,nl,nl,nl,nl,nl,nl,nl,nl,nl,nl,nl,nl,nl,nl,nl,nl,nl,nl,nl,nl,nl,
+    write(Nama), write(' : Aku sudah mengalahkanmu, sekarang kamu sudah tidak bisa berbuat apa-apa lagi.'),nl,sleep(2),
+    write(Nama), write(' : Dimana kamu menahan sang putri?'),nl,
+    write('DRAGON OF YALHEIR : Hah? Apa yang kamu maksud?'),nl,
+    write(Nama), write(' : Jangan pura-pura bodoh! Aku tahu kamu telah menculik sang putri!'),nl,
+    write('DRAGON OF YALHEIR : Akulah sang putri! '),nl,
+    write(Nama), write(' : Apa yang kamu bicarakan ?!'),nl,
+    write('DRAGON OF YALHEIR : Ya, akulah sang putri. Aku telah membohongimu selama ini. '),nl,
+    write(Nama), write(' : NANIIII ?!!'),nl,
+    nl, sleep(3),
+    write('To be continued....'),nl,
+    nl, sleep(3),
+    write(' ---  GAME OVER ---'),nl.

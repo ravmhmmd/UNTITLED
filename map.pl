@@ -12,11 +12,12 @@
 %
 /* ----------------------------- DYNAMIC PREDICATE ------------------------------- */
 :- dynamic(player_loc/2).
+:- dynamic(quest_loc/2).
+:- dynamic(miniboss_loc/2).
 player_loc(1,1).
 shop_loc(4,5).
 shop_loc(8,12).
 dungeon_boss_loc(10,15).
-quest_loc(8,3).
 
 /* ------------------------------------ BATAS ------------------------------------ */
 batasAtas(X,_) :-
@@ -69,3 +70,15 @@ printElmtMap(X,Y) :-
 /* --------------------------------- BAGIAN DALAM --------------------------------- */
 printElmtMap(_,_) :-
     write('- '),!.
+
+/* Merandomkan tempat quest */
+randQuest :-
+    random(1, 11, X),
+    random(1, 16, Y),
+    asserta(quest_loc(X,Y)).
+
+/* Merandomkan tempat miniboss */
+randMiniboss :-
+    random(1, 11, X),
+    random(1, 16, Y),
+    asserta(miniboss_loc(X,Y)).
