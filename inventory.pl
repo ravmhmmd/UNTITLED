@@ -49,7 +49,7 @@ hitungElmt([_|Tail], N) :- hitungElmt(Tail, N1), N is N1+1.
 
 /* ----------------- MENGHITUNG BANYAKNYA ELEMEN LIST TERTENTU ----------------- */
 /* hitungElmtX(List, Count, Elmt) */
-hitungElmtX([],0,X).
+hitungElmtX([],0,_).
 hitungElmtX([X|Tail],N,X) :-
     hitungElmtX(Tail,N1,X),
     N is N1+1.
@@ -139,7 +139,7 @@ print_inventory :-
     item(1, Sword1,_,_,_,_,_),
     item(5, Sword2,_,_,_,_,_),
     item(6, Sword3,_,_,_,_,_),
-    inventory_player(Inventory_list, Inventory_count),
+    inventory_player(Inventory_list, _),
     
     write('LIST ITEM INVENTORY'), nl,
 
@@ -178,7 +178,7 @@ print_inventory :-
     item(2, Arrow1,_,_,_,_,_),
     item(7, Arrow2,_,_,_,_,_),
     item(8, Arrow3,_,_,_,_,_),
-    inventory_player(Inventory_list, Inventory_count),
+    inventory_player(Inventory_list, _),
 
     write('LIST ITEM INVENTORY'),nl,
     hitungElmtX(Inventory_list, N1, Arrow1),
@@ -215,7 +215,7 @@ print_inventory :-
     item(3, Staff1,_,_,_,_,_),
     item(9, Staff2,_,_,_,_,_),
     item(10,Staff3,_,_,_,_,_),
-    inventory_player(Inventory_list, Inventory_count),
+    inventory_player(Inventory_list, _),
 
     write('LIST ITEM INVENTORY'),nl,
     hitungElmtX(Inventory_list, N1, Staff1),
@@ -249,7 +249,7 @@ print_inventory_potion :-
     potion(1, Potion1,_,_,_,_),
     potion(2, Potion2,_,_,_,_),
     potion(3, Potion3,_,_,_,_), 
-    inventory_player(Inventory_list, Inventory_count),
+    inventory_player(Inventory_list, _),
 
     hitungElmtX(Inventory_list, N1, Potion1),
     (
@@ -277,7 +277,7 @@ print_inventory_armor :-
     item(4, Armor1,_,_,_,_,_),
     item(11, Armor2,_,_,_,_,_),
     item(12, Armor3,_,_,_,_,_),
-    inventory_player(Inventory_list, Inventory_count),
+    inventory_player(Inventory_list, _),
 
     hitungElmtX(Inventory_list, N1, Armor1),
     (

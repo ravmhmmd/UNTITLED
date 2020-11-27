@@ -11,7 +11,7 @@
 % |________________________________________________|
 %
 /* ------------------------------- IMPORT MODULE --------------------------------- */
-:- use_module(library(random)).
+% :- use_module(library(random)).
 
 /* ------------------------- IMPORT FILE YANG DIGUNAKAN -------------------------- */
 :- include('inventory.pl').
@@ -30,7 +30,7 @@ beliPotion :-                   % masi error
 pilih_potion(NoPotion) :-
     NoPotion =:= 1,
     ID_item is NoPotion,
-    potion(ID_item, Nama_item, Kategori, HP, Attack, Defense),
+    potion(ID_item, Nama_item,_,_,_,_),
     player(_,_,_,_,_,_,_,_,Gold),
     (
         Gold < 50,
@@ -47,7 +47,7 @@ pilih_potion(NoPotion) :-
 pilih_potion(NoPotion) :-
     NoPotion =:= 2,
     ID_item is NoPotion,
-    potion(ID_item, Nama_item, Kategori, HP, Attack, Defense),
+    potion(ID_item, Nama_item,_,_,_,_),
     player(_,_,_,_,_,_,_,_,Gold),
     (
         Gold < 75,
@@ -64,7 +64,7 @@ pilih_potion(NoPotion) :-
 pilih_potion(NoPotion) :-
     NoPotion =:= 3,
     ID_item is NoPotion,
-    potion(ID_item, Nama_item, Kategori, HP, Attack, Defense),
+    potion(ID_item, Nama_item,_,_,_,_),
     player(_,_,_,_,_,_,_,_,Gold),
     (
         Gold < 150,
@@ -88,7 +88,7 @@ beliItem :-
     nl.
 
 gacha :-
-    player(Nama_role,_,_,_,_,_,_,_,Gold),
+    player(_,_,_,_,_,_,_,_,Gold),
     Gold < 150,
     write('Pembelian gagal, Gold yang anda miliki tidak mencukupi.'), nl, !.
 
